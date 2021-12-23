@@ -1,5 +1,11 @@
-import { NativeModules } from 'react-native';
+import { NativeModules, Platform } from 'react-native'
 
-const { RNStaticSafeAreaInsets } = NativeModules;
+const { RNStaticSafeAreaInsets } = NativeModules
 
-export default RNStaticSafeAreaInsets;
+if (Platform.OS === 'ios') {
+    if (RNStaticSafeAreaInsets.safeAreaInsetsTop === 0) {
+        RNStaticSafeAreaInsets.safeAreaInsetsTop = 20
+    }
+}
+
+export default RNStaticSafeAreaInsets
